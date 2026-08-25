@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Whisk & Bloom | Baking for Beginners</title>
+
+    <style>
+        :root {
+            --cream: #fffaf4;
+            --peach: #f7c7a3;
+            --rose: #e98d8d;
+            --brown: #4b3028;
+            --muted: #78665e;
+            --white: #ffffff;
+            --shadow: 0 12px 35px rgba(91, 55, 42, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: var(--cream);
+            color: var(--brown);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: rgba(255, 250, 244, 0.95);
+            border-bottom: 1px solid #f0dfd3;
+        }
+
+        nav {
+            max-width: 1150px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 24px;
+        }
+
+        .logo {
+            font-family: Georgia, serif;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: var(--rose);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a:hover {
+            color: var(--rose);
+        }
+
+        /* =========================
+           BUTTONS
+        ========================= */
+
+        .btn {
+            display: inline-block;
+            border: none;
+            border-radius: 999px;
+            padding: 12px 20px;
+            background: var(--brown);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        .secondary {
+            background: white;
+            color: var(--brown);
+            border: 1px solid #ead8cc;
+        }
+
+        /* =========================
+           HERO SECTION
+        ========================= */
+
+        .hero {
+            max-width: 1150px;
+            margin: auto;
+            padding: 75px 24px 55px;
+
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 55px;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #fde4d5;
+            color: #9c5949;
+            padding: 7px 13px;
+            border-radius: 999px;
+            font-size: 0.82rem;
+            font-weight: bold;
+            margin-bottom: 18px;
+        }
+
+        h1 {
+            font-family: Georgia, serif;
+            font-size: clamp(3rem, 6vw, 5.3rem);
+            line-height: 0.98;
+            letter-spacing: -2px;
+            margin-bottom: 22px;
+        }
+
+        .hero p {
+            font-size: 1.12rem;
+            color: var(--muted);
+            max-width: 560px;
+            margin-bottom: 28px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        /* =========================
+           HERO IMAGE / CUPCAKE
+        ========================= */
+
+        .cake-art {
+            background: #f8d9c1;
+            border-radius: 45% 45% 20px 20px;
+            min-height: 390px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cake {
+            font-size: 10rem;
+            filter: drop-shadow(
+                0 18px 12px rgba(95, 55, 40, 0.15)
+            );
+        }
+
+        .floating {
+            position: absolute;
+            background: white;
+            padding: 10px 14px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+
+        .f1 {
+            top: 35px;
+            left: 25px;
+        }
+
+        .f2 {
+            right: 25px;
+            bottom: 50px;
+        }
+
+        .f3 {
+            left: 35px;
+            bottom: 35px;
+        }
+
+        /* =========================
+           GENERAL SECTIONS
+        ========================= */
+
+        section {
+            max-width: 1150px;
+            margin: auto;
+            padding: 65px 24px;
+        }
+
+        .section-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            margin-bottom: 28px;
+        }
+
+        h2 {
+            font-family: Georgia, serif;
+            font-size: 2.4rem;
+        }
+
+        .section-head p {
+            color: var(--muted);
+            max-width: 500px;
+        }
+
+        /* =========================
+           BEGINNER BASICS CARDS
+        ========================= */
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 24px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            border: 1px solid #f2e3da;
+        }
+
+        .icon {
+            font-size: 2.4rem;
+            margin-bottom: 14px;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            color: var(--muted);
+            font-size: 0.94rem;
+            margin-bottom: 16px;
+        }
+
+        .card a {
+            font-weight: bold;
+            color: #a75b4f;
+        }
+
+        /* =========================
+           RECIPES
+        ========================= */
+
+        .recipe-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .recipe {
+            background: white;
+            border-radius: 22px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .recipe-top {
+            height: 170px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 5rem;
+            background: #f9dfcc;
+        }
+
+        .recipe:nth-child(2) .recipe-top {
+            background: #e8e1f3;
+        }
+
+        .recipe:nth-child(3) .recipe-top {
+            background: #f5e7b8;
+        }
+
+        .recipe-body {
+            padding: 21px;
+        }
+
+        .recipe-body h3 {
+            margin-bottom: 5px;
+        }
+
+        .recipe-body p {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .meta {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+
+            font-size: 0.78rem;
+            font-weight: bold;
+            color: #9c5949;
+        }
+
+        /* =========================
+           BAKING TIP
+        ========================= */
+
+        .tip {
+            background: var(--brown);
+            color: white;
+            border-radius: 30px;
+            padding: 42px;
+
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .tip h2 {
+            margin-bottom: 8px;
+        }
+
+        .tip p {
+            color: #eadbd4;
+        }
+
+        /* =========================
+           NEWSLETTER
+        ========================= */
+
+        #newsletter {
+            display: none;
+            margin-top: 15px;
+        }
+
+        #newsletter input {
+            padding: 12px 15px;
+            border-radius: 999px;
+            border: none;
+            width: 230px;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #3a2722;
+            color: #eadbd4;
+            padding: 35px 24px;
+            margin-top: 30px;
+        }
+
+        .footer-inner {
+            max-width: 1150px;
+            margin: auto;
+
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        footer strong {
+            color: white;
+        }
+
+        /* =========================
+           MOBILE RESPONSIVENESS
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                padding-top: 45px;
+            }
+
+            .cake-art {
+                min-height: 280px;
+            }
+
+            .cards,
+            .recipe-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-head {
+                display: block;
+            }
+
+            .section-head p {
+                margin-top: 8px;
+            }
+
+            .tip {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-inner {
+                display: block;
+            }
+
+            .footer-inner p {
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
+
+    <header>
+
+        <nav>
+
+            <a class="logo" href="#">
+                Whisk <span>&</span> Bloom
+            </a>
+
+            <div class="nav-links">
+
+                <a href="#start">
+                    Start Here
+                </a>
+
+                <a href="#recipes">
+                    Recipes
+                </a>
+
+                <a href="#tips">
+                    Baking Tips
+                </a>
+
+            </div>
+
+            <a class="btn" href="#recipes">
+                Bake Something
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <main>
+
+        <!-- =========================
+             HERO
+        ========================== -->
+
+        <section class="hero" id="start">
+
+            <div>
+
+                <span class="badge">
+                    NO EXPERIENCE NEEDED
+                </span>
+
+                <h1>
+                    Baking made easy,
+                    one recipe at a time.
+                </h1>
+
+                <p>
+                    Simple recipes, beginner-friendly techniques,
+                    and confidence-boosting tips for anyone who
+                    wants to start baking.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a class="btn" href="#recipes">
+                        Explore Recipes
+                    </a>
+
+                    <a class="btn secondary" href="#tips">
+                        Learn the Basics
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="cake-art">
+
+                <div class="cake">
+                    🧁
+                </div>
+
+                <div class="floating f1">
+                    ✨ Beginner Friendly
+                </div>
+
+                <div class="floating f2">
+                    ♡ Easy Ingredients
+                </div>
+
+                <div class="floating f3">
+                    ⏱ Under 60 min
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             BAKING BASICS
+        ========================== -->
+
+        <section>
+
+            <div class="section-head">
+
+                <div>
+
+                    <span class="badge">
+                        YOUR FIRST STEPS
+                    </span>
+
+                    <h2>
+                        Start with the basics
+                    </h2>
+
+                </div>
+
+                <p>
+                    Don't worry about getting everything perfect.
+                    Learn a few fundamentals and build from there.
+                </p>
+
+            </div>
+
+
+            <div class="cards">
+
+
+                <article class="card">
+
+                    <div class="icon">
+                        ⚖️
+                    </div>
+
+                    <h3>
+                        Measure Like a Pro
+                    </h3>
+
+                    <p>
+                        Learn why weighing flour and measuring
+                        liquids correctly can make your bakes
+                        more consistent.
+                    </p>
+
+                    <a href="#tips">
+                        Read the tip →
+                    </a>
+
+                </article>
+
+
+                <article class="card">
+
+                    <div class="icon">
+                        🔥
+                    </div>
+
+                    <h3>
+                        Understand Your Oven
+                    </h3>
+
+                    <p>
+                        Discover preheating, oven temperatures,
+                        rack positions, and the signs that your
+                        bake is ready.
+                    </p>
+
+                    <a href="#tips">
+                        Read the tip →
+                    </a>
+
+                </article>
+
+
+                <article class="card">
+
+                    <div class="icon">
+                        🥣
+                    </div>
+
+                    <h3>
+                        Master Mixing
+                    </h3>
+
+                    <p>
+                        Understand folding, creaming and stirring
+                        without overmixing your batter.
+                    </p>
+
+                    <a href="#tips">
+                        Read the tip →
+                    </a>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             RECIPES
+        ========================== -->
+
+        <section id="recipes">
+
+            <div class="section-head">
+
+                <div>
+
+                    <span class="badge">
+                        BEGINNER RECIPES
+                    </span>
+
+                    <h2>
+                        Pick your first bake
+                    </h2>
+
+                </div>
+
+                <p>
+                    Three forgiving recipes to help you get
+                    comfortable in the kitchen.
+                </p>
+
+            </div>
+
+
+            <div class="recipe-grid">
+
+
+                <article class="recipe">
+
+                    <div class="recipe-top">
+                        🍪
+                    </div>
+
+                    <div class="recipe-body">
+
+                        <h3>
+                            Classic Chocolate Chip Cookies
+                        </h3>
+
+                        <p>
+                            Crispy edges, soft centres and no
+                            fancy equipment required.
+                        </p>
+
+                        <div class="meta">
+
+                            <span>
+                                ⏱ 30 min
+                            </span>
+
+                            <span>
+                                ★ Easy
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="recipe">
+
+                    <div class="recipe-top">
+                        🍰
+                    </div>
+
+                    <div class="recipe-body">
+
+                        <h3>
+                            One-Bowl Vanilla Cake
+                        </h3>
+
+                        <p>
+                            A simple, fluffy cake that's perfect
+                            for birthdays or afternoon tea.
+                        </p>
+
+                        <div class="meta">
+
+                            <span>
+                                ⏱ 50 min
+                            </span>
+
+                            <span>
+                                ★ Easy
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="recipe">
+
+                    <div class="recipe-top">
+                        🍌
+                    </div>
+
+                    <div class="recipe-body">
+
+                        <h3>
+                            Easy Banana Bread
+                        </h3>
+
+                        <p>
+                            The perfect way to turn overripe
+                            bananas into something delicious.
+                        </p>
+
+                        <div class="meta">
+
+                            <span>
+                                ⏱ 55 min
+                            </span>
+
+                            <span>
+                                ★ Easy
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             BAKING TIP
+        ========================== -->
+
+        <section id="tips">
+
+            <div class="tip">
+
+                <div>
+
+                    <span class="badge">
+                        BEGINNER TIP #01
+                    </span>
+
+                    <h2>
+                        Don't open the oven too early.
+                    </h2>
+
+                    <p>
+                        For cakes and quick breads, opening the
+                        door too soon can cause a sudden temperature
+                        drop and make your bake sink. Use the oven
+                        light and wait until the recipe's minimum
+                        baking time has passed.
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <button
+                        class="btn secondary"
+                        onclick="showNewsletter()">
+
+                        Get More Tips
+
+                    </button>
+
+
+                    <div id="newsletter">
+
+                        <input
+                            type="email"
+                            placeholder="Your email">
+
+                        <button
+                            class="btn"
+                            onclick="joinNewsletter()">
+
+                            Join
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <div class="footer-inner">
+
+            <div>
+
+                <strong>
+                    Whisk & Bloom
+                </strong>
+
+                <p>
+                    Making your first bake feel less scary —
+                    and a lot more delicious.
+                </p>
+
+            </div>
+
+            <p>
+                © 2026 Whisk & Bloom
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        function showNewsletter() {
+
+            const newsletter =
+                document.getElementById("newsletter");
+
+            if (newsletter.style.display === "block") {
+
+                newsletter.style.display = "none";
+
+            } else {
+
+                newsletter.style.display = "block";
+
+            }
+
+        }
+
+
+        function joinNewsletter() {
+
+            alert(
+                "Thanks for joining Whisk & Bloom! 🧁"
+            );
+
+        }
+
+    </script>
+
+</body>
+</html>
